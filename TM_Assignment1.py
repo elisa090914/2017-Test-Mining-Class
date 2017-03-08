@@ -1,32 +1,23 @@
 import nltk
-nltk.download('punkt')
 
 text = open('building_global_community.txt').read()
 lines = [line.strip() for line in text.splitlines()]
 
 from nltk import word_tokenize
 words = []
+
 for line in lines:
-    split_words = word_tokenize(line)
-    words.append(split_words)
+    for word in word_tokenize(line):
+        words.append(word)
 
-for sentence in words:
-    for word in sentence:
-        sentence[sentence.index(word)] = word.lower()
-
-nltk.download('stopwords')
+words = [word.lower() for word in words]
 
 from nltk.corpus import stopwords
 stopwords = set(stopwords.words('english'))
 
-filted_words = []
-for sentence in words:
-    for word in sentence:
-        if word.isalpha() or word.isdigit() or word.isalnum():
-            if word not in stopwords:
-                filted_words.append(word) 
+filted_words = [word for word in words
+                if (word.isalpha() or word.isdigit() or word.isalnum()) and word not in stopwords]
 
-#filted_words
 
 from collections import Counter
 
