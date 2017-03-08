@@ -7,6 +7,7 @@ from nltk import word_tokenize
 words = []
 
 for line in lines:
+    # Split words in each sentence by using word_tokenize()
     for word in word_tokenize(line):
         words.append(word)
 
