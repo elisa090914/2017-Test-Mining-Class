@@ -1,4 +1,5 @@
 import nltk
+nltk.download('punkt')
 
 text = open('building_global_community.txt').read()
 lines = [line.strip() for line in text.splitlines()]
@@ -13,6 +14,7 @@ for line in lines:
 
 words = [word.lower() for word in words]
 
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 stopwords = set(stopwords.words('english'))
 
